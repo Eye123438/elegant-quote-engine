@@ -10,17 +10,17 @@ const footerLinks = {
   ],
   company: [
     { name: 'About Us', href: '/about' },
-    { name: 'Our Process', href: '/about#process' },
+    { name: 'Our Team', href: '/team' },
     { name: 'Portfolio', href: '/portfolio' },
     { name: 'Contact', href: '/contact' },
   ],
 };
 
 const socialLinks = [
-  { name: 'Facebook', icon: Facebook, href: '#' },
-  { name: 'Twitter', icon: Twitter, href: '#' },
-  { name: 'LinkedIn', icon: Linkedin, href: '#' },
-  { name: 'Instagram', icon: Instagram, href: '#' },
+  { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/jlsoftwareke' },
+  { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/jlsoftwareke' },
+  { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/jlsoftware' },
+  { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/jlsoftwareke' },
 ];
 
 export function Footer() {
@@ -40,13 +40,15 @@ export function Footer() {
               </div>
             </div>
             <p className="text-primary-foreground/70 text-sm mb-6">
-              We design websites, build software & power digital businesses. Your trusted partner for digital transformation.
+              We design websites, build software & power digital businesses. Your trusted partner for digital transformation in Kenya.
             </p>
             <div className="flex gap-4">
               {socialLinks.map((item) => (
                 <a
                   key={item.name}
                   href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="h-10 w-10 rounded-lg bg-primary-foreground/10 flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-colors"
                 >
                   <item.icon className="h-5 w-5" />
@@ -102,19 +104,20 @@ export function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-accent flex-shrink-0 mt-0.5" />
                 <span className="text-primary-foreground/70 text-sm">
-                  Nairobi, Kenya
+                  Kerugoya, opposite Mt. Kenya Hospital, Kenya
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="h-5 w-5 text-accent flex-shrink-0" />
-                <a href="tel:+254700000000" className="text-primary-foreground/70 hover:text-primary-foreground text-sm">
-                  +254 700 000 000
-                </a>
+                <div className="text-primary-foreground/70 text-sm">
+                  <a href="tel:+254793923427" className="hover:text-primary-foreground block">0793 923 427</a>
+                  <a href="tel:+254783831115" className="hover:text-primary-foreground block">0783 831 115</a>
+                </div>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="h-5 w-5 text-accent flex-shrink-0" />
-                <a href="mailto:info@jlsoftware.co.ke" className="text-primary-foreground/70 hover:text-primary-foreground text-sm">
-                  info@jlsoftware.co.ke
+                <a href="mailto:info@javalab.co.ke" className="text-primary-foreground/70 hover:text-primary-foreground text-sm">
+                  info@javalab.co.ke
                 </a>
               </li>
             </ul>
