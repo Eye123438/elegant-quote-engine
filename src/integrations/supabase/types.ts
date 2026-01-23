@@ -14,6 +14,51 @@ export type Database = {
   }
   public: {
     Tables: {
+      demo_systems: {
+        Row: {
+          category: string
+          created_at: string
+          demo_url: string | null
+          description: string | null
+          display_order: number | null
+          features: Json | null
+          id: string
+          image_url: string | null
+          is_active: boolean | null
+          name: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          demo_url?: string | null
+          description?: string | null
+          display_order?: number | null
+          features?: Json | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          name: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          demo_url?: string | null
+          description?: string | null
+          display_order?: number | null
+          features?: Json | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean | null
+          name?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       portfolio_projects: {
         Row: {
           category: string
@@ -77,6 +122,135 @@ export type Database = {
           id?: string
           updated_at?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      quotation_requests: {
+        Row: {
+          company_name: string | null
+          created_at: string
+          email: string
+          full_name: string
+          id: string
+          notes: string | null
+          phone: string
+          service_id: string
+          service_name: string
+          status: string | null
+        }
+        Insert: {
+          company_name?: string | null
+          created_at?: string
+          email: string
+          full_name: string
+          id?: string
+          notes?: string | null
+          phone: string
+          service_id: string
+          service_name: string
+          status?: string | null
+        }
+        Update: {
+          company_name?: string | null
+          created_at?: string
+          email?: string
+          full_name?: string
+          id?: string
+          notes?: string | null
+          phone?: string
+          service_id?: string
+          service_name?: string
+          status?: string | null
+        }
+        Relationships: []
+      }
+      service_addons: {
+        Row: {
+          created_at: string
+          description: string | null
+          display_order: number | null
+          icon: string | null
+          id: string
+          is_ai_feature: boolean | null
+          name: string
+          price: number
+          price_suffix: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          icon?: string | null
+          id?: string
+          is_ai_feature?: boolean | null
+          name: string
+          price: number
+          price_suffix?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          display_order?: number | null
+          icon?: string | null
+          id?: string
+          is_ai_feature?: boolean | null
+          name?: string
+          price?: number
+          price_suffix?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      service_packages: {
+        Row: {
+          category: string
+          created_at: string
+          delivery_time: string | null
+          description: string | null
+          display_order: number | null
+          features: Json | null
+          id: string
+          is_featured: boolean | null
+          is_popular: boolean | null
+          name: string
+          price: number
+          price_suffix: string | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          delivery_time?: string | null
+          description?: string | null
+          display_order?: number | null
+          features?: Json | null
+          id?: string
+          is_featured?: boolean | null
+          is_popular?: boolean | null
+          name: string
+          price: number
+          price_suffix?: string | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          delivery_time?: string | null
+          description?: string | null
+          display_order?: number | null
+          features?: Json | null
+          id?: string
+          is_featured?: boolean | null
+          is_popular?: boolean | null
+          name?: string
+          price?: number
+          price_suffix?: string | null
+          slug?: string
+          updated_at?: string
         }
         Relationships: []
       }

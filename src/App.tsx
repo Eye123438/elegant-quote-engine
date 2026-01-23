@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
+import { AIChatWidget } from "@/components/chat/AIChatWidget";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
@@ -13,6 +14,8 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Auth from "./pages/Auth";
 import AdminDashboard from "./pages/AdminDashboard";
+import Demos from "./pages/Demos";
+import Pricing from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +34,8 @@ const App = () => (
             <Route path="/team" element={<Team />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/pricing" element={<Pricing />} />
+            <Route path="/demos" element={<Demos />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/admin" element={
               <ProtectedRoute requireAdmin>
@@ -39,6 +44,8 @@ const App = () => (
             } />
             <Route path="*" element={<NotFound />} />
           </Routes>
+          {/* AI Chat Widget - appears on all pages */}
+          <AIChatWidget />
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>

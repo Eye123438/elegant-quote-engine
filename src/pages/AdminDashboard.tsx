@@ -84,8 +84,13 @@ export default function AdminDashboard() {
     } else {
       const { error } = await supabase
         .from('team_members')
-        .insert([{ ...member, display_order: teamMembers.length + 1 }]);
-      
+        .insert([{ 
+          full_name: member.full_name!, 
+          role: member.role!, 
+          bio: member.bio, 
+          image_url: member.image_url, 
+          display_order: teamMembers.length + 1 
+        }]);
       if (error) {
         toast({ title: 'Error', description: error.message, variant: 'destructive' });
         return;
@@ -132,8 +137,15 @@ export default function AdminDashboard() {
     } else {
       const { error } = await supabase
         .from('portfolio_projects')
-        .insert([{ ...project, display_order: projects.length + 1 }]);
-      
+        .insert([{ 
+          name: project.name!, 
+          category: project.category!, 
+          description: project.description, 
+          technologies: project.technologies, 
+          image_url: project.image_url, 
+          is_featured: project.is_featured, 
+          display_order: projects.length + 1 
+        }]);
       if (error) {
         toast({ title: 'Error', description: error.message, variant: 'destructive' });
         return;
