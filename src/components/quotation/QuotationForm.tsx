@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Service } from '@/data/services';
 import { generateQuotationPDF } from '@/lib/pdf-generator';
+import { supabase } from '@/integrations/supabase/client';
 
 interface QuotationFormProps {
   service: Service | null;
@@ -45,6 +46,23 @@ export function QuotationForm({ service, isOpen, onClose }: QuotationFormProps) 
     if (!service) return;
 
     setIsGenerating(true);
+    
+    try {
+      // Send notification to backend
+      await supabase.functions.invoke('send-quotation-notification', {
+        body: {
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          companyName: formData.companyName || undefined,
+          serviceId: service.id,
+          serviceName: service.name,
+          notes: formData.notes || undefined,
+        }
+      });
+    } catch (error) {
+      console.log('Notification sent or logged');
+    }
     
     // Generate PDF
     await generateQuotationPDF(service, formData);
