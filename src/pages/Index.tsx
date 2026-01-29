@@ -8,6 +8,8 @@ import { Footer } from '@/components/layout/Footer';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { ServiceModal } from '@/components/services/ServiceModal';
 import { QuotationForm } from '@/components/quotation/QuotationForm';
+import { TestimonialsSection } from '@/components/testimonials/TestimonialsSection';
+import { SEOHead, organizationSchema, localBusinessSchema } from '@/components/seo/SEOHead';
 import { services, serviceCategories, Service } from '@/data/services';
 
 // Import hero image
@@ -73,6 +75,12 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead 
+        structuredData={{
+          '@context': 'https://schema.org',
+          '@graph': [organizationSchema, localBusinessSchema],
+        }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -327,6 +335,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <TestimonialsSection />
 
       {/* CTA Section */}
       <section className="py-20 hero-gradient">

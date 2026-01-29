@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer';
 import { ServiceCard } from '@/components/services/ServiceCard';
 import { ServiceModal } from '@/components/services/ServiceModal';
 import { QuotationForm } from '@/components/quotation/QuotationForm';
+import { SEOHead, serviceSchema } from '@/components/seo/SEOHead';
 import { Input } from '@/components/ui/input';
 import { services, serviceCategories, getServicesByCategory, Service } from '@/data/services';
 import { cn } from '@/lib/utils';
@@ -64,6 +65,12 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Digital Services | Web Design & Software Development Kenya - JL Software"
+        description="Browse our complete range of digital services: websites, software systems, POS, e-commerce, school and hospital management. Get instant quotation!"
+        keywords="web design services Kenya, software development services, POS system, school management system, hospital management, e-commerce development"
+        structuredData={serviceSchema('Digital Services', 'Professional web design and software development services in Kenya')}
+      />
       <Header />
 
       {/* Hero Section */}

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SEOHead } from '@/components/seo/SEOHead';
 import { supabase } from '@/integrations/supabase/client';
 
 interface ServicePackage {
@@ -161,6 +162,11 @@ export default function Pricing() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Website Pricing Kenya | Affordable Web Design Packages - JL Software"
+        description="Affordable website packages starting from Ksh 7,499. Professional web design for Kenyan businesses with M-Pesa integration, SEO, and more."
+        keywords="website pricing Kenya, affordable web design, website packages Nairobi, cheap website Kenya, M-Pesa website integration"
+      />
       <Header />
 
       {/* Hero Section */}

@@ -8,6 +8,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import { SEOHead } from '@/components/seo/SEOHead';
 
 const contactInfo = [
   {
@@ -69,6 +70,11 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
+      <SEOHead
+        title="Contact Us | JL Software & Digital Systems Kenya"
+        description="Get in touch with JL Software for web design, software development, and digital solutions in Kenya. Located in Kerugoya, Kirinyaga County."
+        keywords="contact web developer Kenya, JL Software contact, web design company Kerugoya, software company Kirinyaga"
+      />
       <Header />
       
       <main className="flex-1">

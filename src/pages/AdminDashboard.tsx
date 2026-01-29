@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Briefcase, Plus, Pencil, Trash2, Save, X, LogOut } from 'lucide-react';
+import { Users, Briefcase, Plus, Pencil, Trash2, Save, X, LogOut, Package, Monitor, Sparkles } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -8,6 +8,9 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
+import { PackagesTab } from '@/components/admin/PackagesTab';
+import { DemosTab } from '@/components/admin/DemosTab';
+import { AddonsTab } from '@/components/admin/AddonsTab';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -196,14 +199,26 @@ export default function AdminDashboard() {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
         <Tabs defaultValue="team" className="space-y-8">
-          <TabsList className="bg-muted">
+          <TabsList className="bg-muted flex-wrap h-auto gap-1 p-1">
             <TabsTrigger value="team" className="gap-2">
               <Users className="h-4 w-4" />
-              Team Members
+              Team
             </TabsTrigger>
             <TabsTrigger value="portfolio" className="gap-2">
               <Briefcase className="h-4 w-4" />
               Portfolio
+            </TabsTrigger>
+            <TabsTrigger value="packages" className="gap-2">
+              <Package className="h-4 w-4" />
+              Pricing
+            </TabsTrigger>
+            <TabsTrigger value="demos" className="gap-2">
+              <Monitor className="h-4 w-4" />
+              Demos
+            </TabsTrigger>
+            <TabsTrigger value="addons" className="gap-2">
+              <Sparkles className="h-4 w-4" />
+              Add-ons
             </TabsTrigger>
           </TabsList>
 
@@ -322,6 +337,21 @@ export default function AdminDashboard() {
                 ))}
               </div>
             )}
+          </TabsContent>
+
+          {/* Packages Tab */}
+          <TabsContent value="packages">
+            <PackagesTab />
+          </TabsContent>
+
+          {/* Demos Tab */}
+          <TabsContent value="demos">
+            <DemosTab />
+          </TabsContent>
+
+          {/* Add-ons Tab */}
+          <TabsContent value="addons">
+            <AddonsTab />
           </TabsContent>
         </Tabs>
       </main>
