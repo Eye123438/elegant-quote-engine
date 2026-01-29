@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { ProtectedRoute } from "@/components/auth/ProtectedRoute";
 import { AIChatWidget } from "@/components/chat/AIChatWidget";
+import { WhatsAppButton } from "@/components/floating/WhatsAppButton";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import Portfolio from "./pages/Portfolio";
@@ -44,7 +45,8 @@ const App = () => (
             } />
             <Route path="*" element={<NotFound />} />
           </Routes>
-          {/* AI Chat Widget - appears on all pages */}
+          {/* Floating widgets - appear on all pages */}
+          <WhatsAppButton />
           <AIChatWidget />
         </BrowserRouter>
       </TooltipProvider>

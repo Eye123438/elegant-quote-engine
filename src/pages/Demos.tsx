@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
+import { SEOHead } from '@/components/seo/SEOHead';
 import { supabase } from '@/integrations/supabase/client';
 
 interface DemoSystem {
@@ -122,6 +123,11 @@ export default function Demos() {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead
+        title="Software Demos | School, Hospital, POS Systems Kenya - JL Software"
+        description="Try live demos of our management systems: School Management, Hospital Management, POS, Hotel, and Restaurant systems. Experience before you buy!"
+        keywords="school management system Kenya, hospital management system Kenya, POS system demo, hotel management software, restaurant POS Kenya"
+      />
       <Header />
 
       {/* Hero Section */}
