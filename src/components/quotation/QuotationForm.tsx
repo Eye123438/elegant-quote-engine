@@ -60,6 +60,35 @@ export function QuotationForm({ service, isOpen, onClose }: QuotationFormProps) 
           notes: formData.notes || undefined,
         }
       });
+
+      // Auto-create or update client record
+      const { data: existingClient } = await supabase
+        .from('clients')
+        .select('id, interested_services')
+        .eq('email', formData.email)
+        .maybeSingle();
+
+      if (existingClient) {
+        // Update existing client with new service interest
+        const updatedServices = [...(existingClient.interested_services || [])];
+        if (!updatedServices.includes(service.name)) {
+          updatedServices.push(service.name);
+        }
+        await supabase
+          .from('clients')
+          .update({ interested_services: updatedServices })
+          .eq('id', existingClient.id);
+      } else {
+        // Create new client
+        await supabase.from('clients').insert({
+          full_name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          company_name: formData.companyName || null,
+          source: 'quotation',
+          interested_services: [service.name],
+        });
+      }
     } catch (error) {
       console.log('Notification sent or logged');
     }

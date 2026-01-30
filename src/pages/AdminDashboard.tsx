@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Briefcase, Plus, Pencil, Trash2, Save, X, LogOut, Package, Monitor, Sparkles } from 'lucide-react';
+import { Users, Briefcase, Plus, Pencil, Trash2, Save, X, LogOut, Package, Monitor, Sparkles, LayoutDashboard, FileText, MessageSquare, Settings } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,6 +11,11 @@ import { useToast } from '@/hooks/use-toast';
 import { PackagesTab } from '@/components/admin/PackagesTab';
 import { DemosTab } from '@/components/admin/DemosTab';
 import { AddonsTab } from '@/components/admin/AddonsTab';
+import { OverviewTab } from '@/components/admin/OverviewTab';
+import { QuotationsTab } from '@/components/admin/QuotationsTab';
+import { ClientsTab } from '@/components/admin/ClientsTab';
+import { WhatsAppTab } from '@/components/admin/WhatsAppTab';
+import { SettingsTab } from '@/components/admin/SettingsTab';
 import { useAuth } from '@/contexts/AuthContext';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -198,8 +203,24 @@ export default function AdminDashboard() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
-        <Tabs defaultValue="team" className="space-y-8">
+        <Tabs defaultValue="overview" className="space-y-8">
           <TabsList className="bg-muted flex-wrap h-auto gap-1 p-1">
+            <TabsTrigger value="overview" className="gap-2">
+              <LayoutDashboard className="h-4 w-4" />
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="quotations" className="gap-2">
+              <FileText className="h-4 w-4" />
+              Quotations
+            </TabsTrigger>
+            <TabsTrigger value="clients" className="gap-2">
+              <Users className="h-4 w-4" />
+              Clients
+            </TabsTrigger>
+            <TabsTrigger value="whatsapp" className="gap-2">
+              <MessageSquare className="h-4 w-4" />
+              WhatsApp
+            </TabsTrigger>
             <TabsTrigger value="team" className="gap-2">
               <Users className="h-4 w-4" />
               Team
@@ -220,7 +241,31 @@ export default function AdminDashboard() {
               <Sparkles className="h-4 w-4" />
               Add-ons
             </TabsTrigger>
+            <TabsTrigger value="settings" className="gap-2">
+              <Settings className="h-4 w-4" />
+              Settings
+            </TabsTrigger>
           </TabsList>
+
+          {/* Overview Tab */}
+          <TabsContent value="overview">
+            <OverviewTab />
+          </TabsContent>
+
+          {/* Quotations Tab */}
+          <TabsContent value="quotations">
+            <QuotationsTab />
+          </TabsContent>
+
+          {/* Clients Tab */}
+          <TabsContent value="clients">
+            <ClientsTab />
+          </TabsContent>
+
+          {/* WhatsApp Tab */}
+          <TabsContent value="whatsapp">
+            <WhatsAppTab />
+          </TabsContent>
 
           {/* Team Members Tab */}
           <TabsContent value="team" className="space-y-6">
@@ -353,6 +398,11 @@ export default function AdminDashboard() {
           <TabsContent value="addons">
             <AddonsTab />
           </TabsContent>
+
+          {/* Settings Tab */}
+          <TabsContent value="settings">
+            <SettingsTab />
+          </TabsContent>
         </Tabs>
       </main>
     </div>
@@ -385,8 +435,22 @@ function TeamMemberForm({
           <Input value={formData.full_name} onChange={e => setFormData(p => ({ ...p, full_name: e.target.value }))} />
         </div>
         <div className="space-y-2">
-          <Label>Role</Label>
-          <Input value={formData.role} onChange={e => setFormData(p => ({ ...p, role: e.target.value }))} />
+          <Label>Role / Position</Label>
+          <select
+            value={formData.role}
+            onChange={e => setFormData(p => ({ ...p, role: e.target.value }))}
+            className="w-full h-10 px-3 rounded-md border border-input bg-background"
+          >
+            <option value="">Select role...</option>
+            <option value="Admin">Admin</option>
+            <option value="Sales">Sales</option>
+            <option value="Support">Support</option>
+            <option value="Developer">Developer</option>
+            <option value="Designer">Designer</option>
+            <option value="CEO">CEO</option>
+            <option value="CTO">CTO</option>
+            <option value="Manager">Manager</option>
+          </select>
         </div>
         <div className="space-y-2 sm:col-span-2">
           <Label>Image URL</Label>
